@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feliz 21, Elí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Figtree:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@600&family=Graduate&display=swap">
+<style>
+:root{
+  --paper:#F3F5EF; --sheet:#FFFFFF; --ink:#15271F; --muted:#56675D; --line:#D3DCD2;
+  --green:#1E7A4C; --green-deep:#0F4A2E; --gold:#F2B230; --stamp:#C9382A; --note:#FFE58A;
+  --pink:#F7C6D3; --sky:#CFE3F6; --mint:#CDEBD8; --mu:#23459A;
+  --display:"Unbounded", "Arial Black", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+  --college:"Graduate", "Rockwell", Georgia, serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--body);padding-inline:16px;overflow-x:hidden}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.1;margin:0}
+h2{font-size:clamp(28px,6vw,46px);font-weight:800;letter-spacing:-.01em}
+.eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+.lede{max-width:60ch;color:var(--muted);font-size:18px;margin:0}
+section{padding-block:56px 16px}
+.sec-head{display:grid;gap:12px;margin-bottom:28px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Hero: comprobante ---------- */
+.hero{padding-block:32px 8px;display:grid;gap:28px;grid-template-columns:minmax(0,1fr);align-items:center}
+@media (min-width:860px){.hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.hero-photo{position:relative;justify-self:center;max-width:420px;width:100%}
+.hero-photo .frame{background:var(--sheet);padding:12px 12px 56px;box-shadow:0 18px 40px -18px rgba(15,74,46,.45);transform:rotate(-2.5deg)}
+.hero-photo img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.hero-photo .cap{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:600 30px/1 var(--hand);color:var(--ink);transform:rotate(-2.5deg)}
+.clip{position:absolute;top:-18px;left:50%;width:120px;height:34px;margin-left:-60px;background:rgba(242,178,48,.75);transform:rotate(3deg);z-index:2}
+.hero-photo .st{position:absolute;z-index:3;width:92px;right:-14px;bottom:40px;transform:rotate(10deg)}
+.receipt{position:relative;background:var(--sheet);padding:28px 24px 34px;box-shadow:0 18px 40px -22px rgba(21,39,31,.35);
+  --z:10px;
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% / calc(2*var(--z)) 100%;
+          mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50% / calc(2*var(--z)) 100%}
+.receipt .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px dashed var(--line);padding-bottom:14px;margin-bottom:18px}
+.receipt .top .num{font:500 13px/1.4 var(--mono);color:var(--muted);text-align:right}
+.ransom{display:flex;flex-wrap:wrap;align-items:flex-end;gap:2px 0;margin:8px 0 2px}
+.ransom .word{display:flex;align-items:flex-end;margin-right:14px}
+.ransom img{height:clamp(40px,8.5vw,64px);width:auto;margin-right:-3px}
+.ransom img:nth-child(odd){transform:rotate(-5deg) translateY(2px)} .ransom img:nth-child(3n){transform:rotate(6deg)}
+.eli{font:800 clamp(40px,9vw,70px)/1 var(--display);color:var(--green);letter-spacing:-.02em;margin:4px 0 18px}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font:400 14px/1.5 var(--mono);margin-bottom:18px}
+.meta dt{color:var(--muted)} .meta dd{margin:0;font-weight:500}
+.items{width:100%;border-collapse:collapse;font:400 14px/1.4 var(--mono)}
+.items th{font-weight:500;text-align:left;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 0;border-bottom:1px solid var(--line)}
+.items th:last-child,.items td:last-child{text-align:right}
+.items td{padding:9px 0;border-bottom:1px dotted var(--line);vertical-align:top}
+.items td:last-child{padding-left:12px;white-space:nowrap}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font:800 20px/1.2 var(--display)}
+.total span:last-child{color:var(--green)}
+.issued{margin-top:16px;font:400 13px/1.5 var(--mono);color:var(--muted)}
+.stamp{position:absolute;right:18px;bottom:128px;border:3px solid var(--stamp);color:var(--stamp);border-radius:8px;padding:6px 10px;
+  font:800 13px/1.15 var(--display);text-align:center;letter-spacing:.06em;transform:rotate(-12deg);opacity:.85;mix-blend-mode:multiply;pointer-events:none}
+.stamp small{display:block;font:500 10px/1.3 var(--mono);letter-spacing:.1em}
+.open-btn{margin-top:22px;display:inline-flex;align-items:center;gap:10px;border:0;cursor:pointer;background:var(--green-deep);color:#fff;
+  font:700 16px/1 var(--body);padding:16px 22px;border-radius:999px;box-shadow:0 8px 0 -2px var(--gold)}
+.open-btn:hover{background:var(--green)}
+.open-btn:focus-visible,.music:focus-visible,.card:focus-visible,.tile:focus-visible,.flame-btn:focus-visible,.blow:focus-visible,.pol:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* ---------- Origen ---------- */
+.photo{margin:0;background:var(--sheet);padding:10px 10px 12px;box-shadow:0 14px 34px -20px rgba(21,39,31,.5);transform:rotate(1deg)}
+.photo img{width:100%;height:auto}
+.photo figcaption{font:400 12px/1.4 var(--mono);color:var(--muted);padding-top:10px}
+.origin{display:grid;gap:28px;align-items:center}
+@media (min-width:860px){.origin{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}}
+
+/* ---------- Frases y stickers flotantes ---------- */
+.drift{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px 22px;padding-block:28px}
+.drift > *{animation:bob 5.5s ease-in-out infinite alternate}
+.drift > *:nth-child(2n){animation-duration:6.8s;animation-delay:-2s}
+.drift > *:nth-child(3n){animation-duration:4.9s;animation-delay:-3.5s}
+@keyframes bob{from{translate:0 -5px}to{translate:0 6px}}
+.phrase{font:600 26px/1.05 var(--hand);padding:10px 16px 12px;border-radius:14px;max-width:320px;text-align:center;box-shadow:0 8px 16px -10px rgba(21,39,31,.45);color:var(--ink)}
+.phrase.long{font-size:22px}
+.meme{width:clamp(96px,26vw,138px);background:#fff;padding:5px;border-radius:12px;box-shadow:0 10px 20px -10px rgba(21,39,31,.55)}
+.meme img{border-radius:8px;width:100%;height:auto}
+.stk{width:clamp(78px,20vw,112px);filter:drop-shadow(0 6px 8px rgba(21,39,31,.25))}
+.stk img{width:100%;height:auto}
+
+/* ---------- Timeline ---------- */
+.timeline{position:relative;display:grid;gap:18px;padding-left:28px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:repeating-linear-gradient(var(--green) 0 8px,transparent 8px 14px)}
+.chap{position:relative;display:grid;gap:14px;padding-top:24px}
+.chap::before{content:"";position:absolute;left:-28px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--paper);box-shadow:0 0 0 2px var(--green)}
+.tab{justify-self:start;background:var(--green);color:#fff;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 12px 6px;border-radius:8px 8px 0 0}
+.chap h3{font-size:clamp(22px,4.4vw,32px);font-weight:800}
+.chap > p{margin:0;max-width:60ch;color:var(--muted)}
+.pennant{justify-self:start;position:relative;background:var(--mu);color:#fff;font:400 clamp(20px,4.6vw,34px)/1.05 var(--college);letter-spacing:.04em;text-transform:uppercase;
+  padding:14px 64px 14px 22px;clip-path:polygon(0 0,100% 50%,0 100%);min-height:96px;display:flex;align-items:center;max-width:100%}
+.pennant::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--gold)}
+.photos{display:grid;gap:10px;grid-template-columns:repeat(6,minmax(0,1fr))}
+.photos .tile{grid-column:span 2}
+.photos.n2 .tile{grid-column:span 3}
+.photos.n4 .tile{grid-column:span 3}
+.photos.n5 .tile:nth-child(-n+2){grid-column:span 3}
+@media (min-width:760px){.photos.n4 .tile{grid-column:span 2}.photos.n4 .tile:first-child{grid-column:span 6}}
+.tile{position:relative;padding:0;border:0;background:var(--sheet);cursor:zoom-in;overflow:hidden;border-radius:4px}
+.tile img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
+.tile:hover img{transform:scale(1.04)}
+.tile .cap{position:absolute;left:8px;bottom:8px;background:rgba(21,39,31,.82);color:#fff;font:500 12px/1.2 var(--mono);padding:5px 8px;border-radius:6px;text-align:left}
+.note{justify-self:start;max-width:360px;background:var(--note);color:var(--ink);font:600 26px/1.1 var(--hand);padding:12px 16px 14px;transform:rotate(-1.5deg);box-shadow:0 6px 14px -8px rgba(0,0,0,.35)}
+.note small{display:block;font:500 10px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;color:#6B5A12}
+.verse{justify-self:start;max-width:52ch;border-left:3px solid var(--gold);padding:4px 0 4px 14px;font-style:italic;color:var(--ink)}
+.lede-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.lede-row .stk{width:96px}
+
+/* ---------- Banda ---------- */
+.band{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.card{border:0;background:none;padding:0;text-align:left;font:inherit;color:inherit;perspective:900px}
+.card[data-flip]{cursor:pointer}
+.card .inner{position:relative;display:grid;transition:transform .6s;transform-style:preserve-3d}
+.card.on .inner{transform:rotateY(180deg)}
+.face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:10px 10px 14px;display:grid;gap:8px;align-content:start}
+.face.back{transform:rotateY(180deg);background:var(--green-deep);color:#fff;border-color:var(--green-deep);font-size:15px;line-height:1.45;padding:16px}
+.face img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:9px}
+.face .nm{font:800 18px/1.1 var(--display);padding-inline:4px}
+.face .ph{font:600 20px/1.1 var(--hand);color:var(--green);padding-inline:4px}
+.face .role{font:500 11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-inline:4px}
+.face .hint{font:500 11px/1.2 var(--mono);color:var(--muted);padding-inline:4px}
+
+/* ---------- Mural ---------- */
+.mural{columns:2 150px;column-gap:14px}
+@media (min-width:760px){.mural{columns:4 180px}}
+.pol{break-inside:avoid;display:block;width:100%;margin:0 0 14px;background:var(--sheet);padding:7px 7px 22px;border:0;cursor:zoom-in;box-shadow:0 8px 18px -12px rgba(21,39,31,.55);transition:transform .25s}
+.pol img{width:100%;height:auto}
+.pol:nth-child(3n){transform:rotate(1.4deg)} .pol:nth-child(3n+1){transform:rotate(-1.2deg)}
+.pol:hover{transform:rotate(0) scale(1.02)}
+
+/* ---------- Pastel ---------- */
+.cake-sec{text-align:center;display:grid;justify-items:center;gap:18px}
+.cake-sec .lede{margin-inline:auto}
+.sunset{width:100%;max-width:760px;border-radius:6px;aspect-ratio:16/9;object-fit:cover}
+.cake{position:relative;width:min(300px,86vw);margin-top:40px}
+.candles{display:flex;justify-content:center;gap:18px;position:relative;z-index:2;margin-bottom:-6px}
+.candle{position:relative;font:800 74px/1 var(--display);color:var(--gold);-webkit-text-stroke:2px var(--green-deep);display:grid;justify-items:center}
+.flame-btn{position:absolute;top:-44px;left:50%;margin-left:-22px;width:44px;height:48px;border:0;background:none;cursor:pointer;padding:0}
+.flame{position:absolute;left:50%;bottom:4px;width:18px;height:30px;margin-left:-9px;border-radius:50% 50% 45% 45%/60% 60% 40% 40%;
+  background:radial-gradient(circle at 50% 70%,#fff7cf 0 22%,#ffc93c 45%,#ff7a1a 80%);box-shadow:0 0 18px 6px rgba(255,190,60,.55);animation:flick .18s infinite alternate}
+.out .flame{animation:none;opacity:0;transform:scale(.2);transition:.35s}
+.smoke{position:absolute;left:50%;bottom:10px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:rgba(90,100,95,.45);opacity:0}
+.out .smoke{animation:smoke 1.4s ease-out forwards}
+@keyframes flick{to{transform:scale(1.06,.94) rotate(2deg)}}
+@keyframes smoke{0%{opacity:.8;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-50px) scale(4)}}
+.tier{border-radius:14px 14px 8px 8px;margin-inline:auto;position:relative}
+.tier.t1{width:72%;height:70px;background:#FFF1D6;border:3px solid var(--green-deep)}
+.tier.t2{width:100%;height:92px;background:var(--green);border:3px solid var(--green-deep);margin-top:-3px}
+.tier.t1::before{content:"";position:absolute;left:-3px;right:-3px;top:-3px;height:26px;border-radius:14px 14px 0 0;
+  background:radial-gradient(circle at 12px 0,#fff 12px,transparent 13px) 0 0/24px 26px repeat-x}
+.tier.t2::after{content:"ELÍ · 21";position:absolute;inset:0;display:grid;place-items:center;font:800 22px/1 var(--display);color:#fff;letter-spacing:.1em}
+.plate{width:118%;margin-left:-9%;height:14px;background:var(--line);border-radius:50%;margin-top:-4px}
+.blow{border:2px solid var(--green-deep);background:var(--sheet);color:var(--green-deep);font:700 15px/1 var(--body);padding:13px 20px;border-radius:999px;cursor:pointer}
+.wish{font:600 34px/1.1 var(--hand);color:var(--green);min-height:1.2em}
+
+/* ---------- Carta ---------- */
+.letter-wrap{position:relative;max-width:680px;width:100%;margin:44px auto 0}
+.letter{background:var(--sheet);padding:clamp(22px,5vw,48px);box-shadow:0 20px 44px -26px rgba(21,39,31,.5);text-align:left;
+  background-image:linear-gradient(transparent 31px,#E7ECE5 32px);background-size:100% 32px;line-height:32px;font-size:17px}
+.letter h3{font-size:clamp(22px,4.6vw,30px);line-height:1.2;margin-bottom:16px;color:var(--green-deep);padding-right:48px}
+.letter p{margin:0 0 16px}
+.letter mark{background:linear-gradient(transparent 55%,rgba(242,178,48,.55) 55%);color:inherit;padding:0 2px}
+.sign{font:600 30px/1.2 var(--hand);color:var(--green-deep);margin-top:8px}
+.names{font:400 13px/1.6 var(--mono);color:var(--muted)}
+.letter-wrap .deco{position:absolute;z-index:2;filter:drop-shadow(0 6px 8px rgba(21,39,31,.25))}
+.deco.d1{width:clamp(70px,16vw,110px);top:-34px;right:-10px;transform:rotate(12deg)}
+.deco.d2{width:clamp(64px,14vw,96px);bottom:-30px;left:-12px;transform:rotate(-10deg)}
+.deco.d3{width:clamp(70px,15vw,100px);bottom:-34px;right:4px;transform:rotate(6deg)}
+footer{padding-block:72px 40px;text-align:center;font:400 12px/1.6 var(--mono);color:var(--muted);letter-spacing:.06em;display:grid;justify-items:center;gap:14px}
+footer .meme{transform:rotate(-3deg)}
+
+/* ---------- Misc ---------- */
+.music{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;width:52px;height:52px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--green-deep);color:#fff;font:700 20px/1 var(--body);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.music[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1000px);max-height:92vh}
+dialog::backdrop{background:rgba(10,20,15,.88)}
+dialog img{max-height:86vh;width:auto;margin:auto;border:6px solid #fff}
+dialog button{position:absolute;top:8px;right:8px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:var(--ink);font:700 20px/1 var(--body);cursor:pointer}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+<button class="music" id="music" aria-pressed="false" aria-label="Poner música">♪</button>
+<audio id="song" src="cancion.mp3" preload="none" loop></audio>
+
+<div class="wrap">
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-photo">
+    <span class="clip" aria-hidden="true"></span>
+    <div class="frame"><img src="img/f5.jpg" alt="Eiler en la entrada de la oficina de Teolan Inmobiliaria"></div>
+    <div class="cap">el cumpleañero</div>
+    <img class="st" src="st/s-star-01.webp" alt="" aria-hidden="true">
+  </div>
+  <div class="receipt">
+    <div class="top">
+      <div><div class="eyebrow">Teoland Inmobiliaria</div><div class="eyebrow" style="color:var(--muted)">Área de cobranzas</div></div>
+      <div class="num">COMPROBANTE DE CUMPLEAÑOS<br>N° 0021-2026</div>
+    </div>
+    <div class="stamp">CANCELADO<small>con cariño</small></div>
+    <h1><span class="sr">¡Feliz cumpleaños, Elí!</span>
+      <span class="ransom" aria-hidden="true">
+        <span class="word"><img src="st/l-F.webp" alt=""><img src="st/l-E.webp" alt=""><img src="st/l-L.webp" alt=""><img src="st/l-I.webp" alt=""><img src="st/l-Z.webp" alt=""></span>
+        <span class="word"><img src="st/l-C.webp" alt=""><img src="st/l-U.webp" alt=""><img src="st/l-M.webp" alt=""><img src="st/l-P.webp" alt=""><img src="st/l-L2.webp" alt=""><img src="st/l-E2.webp" alt=""></span>
+      </span>
+      <span class="eli" aria-hidden="true" style="display:block">Elí!</span>
+    </h1>
+    <dl class="meta">
+      <dt>Cliente</dt><dd>Eiler “Elí”</dd>
+      <dt>Emisión</dt><dd>28/09/2026</dd>
+      <dt>Condición</dt><dd>Amigo y consiervo</dd>
+    </dl>
+    <table class="items">
+      <thead><tr><th>Concepto</th><th>Cant.</th></tr></thead>
+      <tbody>
+        <tr><td>Años de vida</td><td>21</td></tr>
+        <tr><td>Compartires en la ofi y fuera</td><td>incontables</td></tr>
+        <tr><td>Archivadores revisados juntos 😂</td><td>demasiados</td></tr>
+        <tr><td>Salidas con foto en cada tienda</td><td>todas</td></tr>
+        <tr><td>Tiempo de amistad</td><td>1½ años y más</td></tr>
+      </tbody>
+    </table>
+    <div class="total"><span>Total</span><span>Invaluable</span></div>
+    <div class="issued">Emitido por: Dorka · Elías · Katy · Daniel · Jaime · Feli · David</div>
+    <button class="open-btn" id="open">🎁 Abrir regalo</button>
+  </div>
+</header>
+
+<div class="drift" data-drift="hero"></div>
+
+<!-- ORIGEN -->
+<section id="inicio">
+  <div class="origin">
+    <div class="sec-head">
+      <div class="eyebrow">Donde todo empezó</div>
+      <h2>Empezamos siendo compañeros de oficina</h2>
+      <p class="lede">Entre archivadores, contratos, bases de datos, conciliaciones y el ruido de las impresoras (pobre Susi, no le gustaba chambear), nos tocó compartir escritorio. Nadie imaginó que de ahí saldría una familia.</p>
+      <p class="lede">Hoy ya no compartimos oficina, pero seguimos siendo amigos. Por eso este regalo.</p>
+    </div>
+    <figure class="photo">
+      <img src="img/f4.jpg" alt="El grupo de pie en el área de cobranzas">
+      <figcaption>Área de cobranzas, Teoland</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="drift" data-drift="origen"></div>
+
+<!-- LÍNEA DE TIEMPO -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Línea de tiempo</div>
+    <h2>Año y medio de momentos</h2>
+    <p class="lede">Las charlas, los almuerzos, las salidas por un helado, las compras, las risas y hasta la revisión de los archivadores.</p>
+    <div class="lede-row">
+      <div class="note"><small>Nota del editor</small>Como cuando me decía “Calla oe” y después “Perdón jefecito” xd</div>
+      <div class="stk"><img src="st/s-frog-01.webp" alt="Sticker de rana con lentes: Kallaito"></div>
+    </div>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- BANDA -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">La banda de Teo Land</div>
+    <h2>Los que firmamos este regalo</h2>
+  </div>
+  <div class="band" id="band"></div>
+</section>
+
+<div class="drift" data-drift="banda"></div>
+
+<!-- MURAL -->
+<section>
+  <div class="sec-head">
+    <div class="eyebrow">Mural</div>
+    <h2>Más recuerdos juntos</h2>
+    <p class="lede">Ya no compartimos escritorio, pero seguimos juntando fotos. Aquí van todas las que no entraron arriba. Toca cualquiera para verla grande.</p>
+  </div>
+  <div class="mural" id="mural"></div>
+</section>
+
+<div class="drift" data-drift="mural"></div>
+
+<!-- PASTEL -->
+<section class="cake-sec" id="pastel">
+  <div class="sec-head" style="justify-items:center">
+    <div class="eyebrow">Y lo que falta por vivir</div>
+    <h2>Pide un deseo, Elí</h2>
+  </div>
+  <img class="sunset" src="img/f90.jpg" alt="Amigos saltando en la playa al atardecer" loading="lazy">
+  <p class="lede">Toca cada vela para soplarla.</p>
+  <div class="cake" aria-label="Pastel con velas de 21 años">
+    <div class="candles">
+      <div class="candle" data-c>2<button class="flame-btn" aria-label="Soplar la vela 2"><span class="flame"></span><span class="smoke"></span></button></div>
+      <div class="candle" data-c>1<button class="flame-btn" aria-label="Soplar la vela 1"><span class="flame"></span><span class="smoke"></span></button></div>
+    </div>
+    <div class="tier t1"></div>
+    <div class="tier t2"></div>
+    <div class="plate"></div>
+  </div>
+  <button class="blow" id="blow">Soplar todas las velas</button>
+  <div class="wish" id="wish" aria-live="polite"></div>
+
+  <div class="letter-wrap">
+    <img class="deco d1" src="st/s-crown.webp" alt="" aria-hidden="true">
+    <img class="deco d2" src="st/s-jly-01.webp" alt="" aria-hidden="true">
+    <img class="deco d3" src="st/s-jesusly-02.webp" alt="" aria-hidden="true">
+    <article class="letter" id="carta">
+      <h3>¡Feliz cumpleaños, querido hermano y amigo! 🎂🎉</h3>
+      <p>Hoy celebramos tu vida y le damos infinitas gracias a Dios por haber permitido que nuestras vidas se cruzaran. Empezamos siendo compañeros de oficina, pero con el tiempo, las charlas, los almuerzos, las salidas por un helado, las compras, las risas, las anécdotas y hasta la revisión de las facturas 😂, Dios fue tejiendo una amistad profunda. En este año y medio (¡y más!) de compartir juntos, hemos formado una verdadera familia en Cristo.</p>
+      <p>Queremos que sepas que te extrañamos muchísimo, que eres una persona muy especial y sumamente querida para todos nosotros. Damos gracias a Dios por tu vida, por ver en ti a un gran hijo de Dios y a un amigo incondicional.</p>
+      <p>Oramos y deseamos de todo corazón que pases un día maravilloso. Que el Señor te bendiga grandemente y guarde tu caminar. Que los anhelos de tu corazón se cumplan conforme a Su perfecta y buena voluntad, recordando siempre que <mark>a los que aman a Dios, todas las cosas les ayudan para bien (Romanos 8:28)</mark>. ¡A seguir firmes en el Señor y hacia adelante!</p>
+      <p>Confiamos en que muy pronto volveremos a reunirnos y a compartir más momentos inolvidables juntos.</p>
+      <p>¡Te queremos mucho! Un fuerte abrazo de parte de tu familia y hermanos en Cristo de la oficina. 🙏✨</p>
+      <div class="sign">Tu familia de Teo Land</div>
+      <div class="names">Dorka · Elías · Katy · Daniel · Jaime · Feli · David</div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="meme"><img src="st/m-tulio.webp" alt="Meme: Hasta aquí mi reporte, Tulio" loading="lazy"></div>
+  <div>TEOLAND · 28.09.2026 · 21 AÑOS DE ELÍ<br>Hecho con cariño por tu familia de la oficina</div>
+</footer>
+</div>
+
+<dialog id="lb"><button aria-label="Cerrar" id="lbx">✕</button><img id="lbimg" alt=""></dialog>
+
+<script>
+/* Frases (texto) y stickers (st/...) repartidos por la página */
+const P = (t, c) => ({t, c}), S = (s, alt) => ({s, alt}), M = (m, alt) => ({m, alt});
+const DRIFT = {
+  hero:   [P("Bueno mi gente, STORYTIME","var(--note)"), M("muehehe","Meme: gato diciendo muehehe"), P("Jakaja","var(--pink)"), M("boujour","Meme: gato diciendo boujour")],
+  origen: [S("pets-08","Sticker de gato con audífonos"), P("¿Qué te pasa, calabaza?","var(--sky)"), M("aaaa","Meme: gato gritando AAAA"), P("Apóstol","var(--mint)")],
+  charlas:[M("aynose","Meme: gato diciendo Ay, no sé"), P("Ay no sé David","var(--note)"), S("halfcats-05","Sticker de gato con lentes")],
+  cobranzas:[P("¿No te sale?","var(--pink)"), M("dejaveo","Meme: gato con lentes, Deja veo"), P("Ay David trabaja","var(--sky)"), M("jcole","Meme")],
+  compartires:[P("Tengo sueño","var(--mint)"), M("dory","Meme: Dory cargando"), S("pets-02","Sticker de perrito salchicha")],
+  holy:   [P("El jüaimee","var(--note)"), S("halfcats-02","Sticker de gato"), P("Jaimito","var(--pink)"), M("pug","Meme: pug con gorrito y chupetín")],
+  salidas:[P("Ay Eiler","var(--sky)"), M("lengua","Meme: gato sacando la lengua"), S("pets-06","Sticker de gatito")],
+  fiestas:[M("boom","Meme: gato con explosión atrás"), P("Vamos cerrando el papoi","var(--note)"), M("bread","Meme: pan con patitas")],
+  cristo: [S("xsheet1-04","Sticker Jesus"), P("Toda crisis comienza cuando quitamos los ojos de Jesús.","var(--mint)"), M("terapia","Meme: No quiero terapia, necesito a Cristo"), S("oremos-01","Sticker: Terrible. Oremos"), M("espiritu","Meme: el Espíritu Santo deteniéndome"), S("xsheet2-13","Sticker Jesus saves"), S("xsheet1-10","Sticker God is good all the time")],
+  risas:  [P("Jajaj","var(--pink)"), S("halfcats-03","Sticker de gato"), S("pets-01","Sticker de gatito guiñando"), P("La extraño","var(--sky)"), S("halfcats-08","Sticker de gato riendo"), S("pets-07","Sticker de perrito")],
+  banda:  [P("Feli, antes te despedías con un abrazo o un beso en el cachete","var(--pink)"), M("contestame","Meme: Contéstame")],
+  mural:  [S("xsheet1-02","Sticker This is my happy place"), M("soldado","Meme: Vamos soldado, hasta que Cristo venga"), S("xsheet2-09","Sticker God is love"), M("lion","León y cordero")]
+};
+const CHAPTERS = [
+  {tab:"Sala de reuniones", title:"Las charlas", text:"A veces no todo era trabajo, pero hasta examen del devocional nos quisieron hacer :c",
+   photos:[{n:17},{n:172},{n:20}], drift:"charlas"},
+  {tab:"Cobranzas", title:"Cobranzas, “la mejor área”", text:"A pesar de la cantidad de archivadores, siempre había un momento para la palabra de prosperidad.",
+   photos:[{n:15},{n:76}], drift:"cobranzas"},
+  {tab:"Compartires", title:"Los compartires", text:"Los que hacíamos en la ofi y fuera de ella. Buenos y bonitos momentos alrededor de una mesa.",
+   photos:[{n:8},{n:93},{n:68},{n:164}], drift:"compartires"},
+  {tab:"Casa de campo", title:"Holy Club", text:"Siempre que íbamos, salía su real partidazo.",
+   photos:[{n:12},{n:10},{n:140}], drift:"holy"},
+  {tab:"Salidas", title:"Salidas de la ofi", text:"Cada vez que salíamos de la ofi todos juntos y pasábamos por alguna tienda, salían sus reales fotos.",
+   photos:[{n:103},{n:100},{n:27},{n:99},{n:24}], drift:"salidas"},
+  {tab:"Celebraciones", title:"Ningún cumpleaños sin torta", text:"En la ofi y fuera de ella, ningún cumpleaños pasaba sin torta y foto. Hoy te toca a ti.",
+   photos:[{n:70},{n:73},{src:"img/cumple-ofi.jpg"},{n:180}], drift:"fiestas"},
+  {tab:"En Cristo", title:"Una familia en Cristo", text:"Con el tiempo, Dios fue tejiendo algo más profundo que una amistad de trabajo. Compartimos la fe y la alabanza.",
+   photos:[{n:31},{n:36},{n:47},{n:184}], verse:"“Mirad cuán bueno y cuán delicioso es habitar los hermanos juntos en armonía.” Salmo 133:1", drift:"cristo"},
+  {tab:"Anécdotas", pennant:"Pero las risas no faltaron", text:"Porque nadie puede estar serio todo el tiempo. Cascos, bolsas en la cabeza y filtros: aquí está la evidencia.",
+   photos:[{n:125},{n:156},{n:72},{n:137},{n:152}], drift:"risas"}
+];
+const BAND = [
+  {nm:"Dorka", img:"dorka", role:"La adm", ph:"", dedic:""},
+  {nm:"Elías", img:"elias", role:"Teo Land", ph:"", dedic:""},
+  {nm:"Katy", img:"katy", role:"Teo Land", ph:"", dedic:""},
+  {nm:"Daniel", img:"daniel", role:"Teo Land", ph:"", dedic:""},
+  {nm:"Jaime", img:"jaime", role:"Teo Land", ph:"“El jüaimee”", dedic:""},
+  {nm:"Feli", img:"feli", role:"Teo Land", ph:"", dedic:""},
+  {nm:"David", img:"david", role:"Teo Land", ph:"“Ay David trabaja”", dedic:""}
+];
+const MURAL = [2,7,11,13,16,19,21,22,29,30,33,34,35,41,43,44,46,48,52,53,54,59,61,62,65,66,71,74,77,80,84,88,89,91,105,107,114,118,123,128,133,135,138,141,153,167,174,181,183];
+
+const $ = s => document.querySelector(s);
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const TILT = [-4,3,-2,5,-3,2,-5,4];
+
+function driftHTML(key){
+  return (DRIFT[key]||[]).map((it,i) => {
+    const r = TILT[(i + key.length) % TILT.length];
+    if (it.t) return `<div class="phrase${it.t.length>34?" long":""}" style="background:${it.c};rotate:${r}deg">${esc(it.t)}</div>`;
+    if (it.m) return `<div class="meme" style="rotate:${r}deg"><img src="st/m-${it.m}.webp" alt="${esc(it.alt)}" loading="lazy"></div>`;
+    return `<div class="stk" style="rotate:${r}deg"><img src="st/s-${it.s}.webp" alt="${esc(it.alt)}" loading="lazy"></div>`;
+  }).join("");
+}
+document.querySelectorAll("[data-drift]").forEach(el => el.innerHTML = driftHTML(el.dataset.drift));
+
+$("#timeline").innerHTML = CHAPTERS.map(c => {
+  const ph = c.photos.map(p => { const u = p.src || `img/f${p.n}.jpg`; return `<button class="tile" data-src="${u}"><img src="${u}" alt="${esc(p.cap || "Foto: " + (c.title || c.pennant))}" loading="lazy">${p.cap?`<span class="cap">${esc(p.cap)}</span>`:""}</button>`; }).join("");
+  const head = c.pennant ? `<h3 class="pennant">${c.pennant}</h3>` : `<h3>${c.title}</h3>`;
+  return `<article class="chap"><span class="tab">${c.tab}</span>${head}<p>${c.text}</p>
+    <div class="photos n${c.photos.length}">${ph}</div>
+    ${c.verse?`<div class="verse">${c.verse}</div>`:""}</article>
+    <div class="drift">${driftHTML(c.drift)}</div>`;
+}).join("");
+
+$("#band").innerHTML = BAND.map(b => {
+  const front = `<div class="face"><img src="img/card-${b.img}.jpg" alt="${b.nm}" loading="lazy"><div class="role">${b.role}</div><div class="nm">${b.nm}</div>${b.ph?`<div class="ph">${b.ph}</div>`:""}${b.dedic?`<div class="hint">Toca para leer ↻</div>`:""}</div>`;
+  const back = b.dedic ? `<div class="face back"><div class="role" style="color:var(--gold)">De ${b.nm} para Elí</div><div>${b.dedic}</div></div>` : "";
+  return b.dedic
+    ? `<button class="card" data-flip aria-label="Dedicatoria de ${b.nm}"><div class="inner">${front}${back}</div></button>`
+    : `<div class="card"><div class="inner">${front}</div></div>`;
+}).join("");
+document.querySelectorAll(".card[data-flip]").forEach(c => c.addEventListener("click", () => c.classList.toggle("on")));
+
+$("#mural").innerHTML = MURAL.map(n => `<button class="pol" data-src="m/f${n}.jpg"><img src="m/f${n}.jpg" alt="Foto del grupo" loading="lazy"></button>`).join("");
+
+/* Lightbox */
+const lb = $("#lb");
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-src]"); if (!t) return;
+  $("#lbimg").src = t.dataset.src; lb.showModal();
+});
+$("#lbx").onclick = () => lb.close();
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+
+/* Música */
+const song = $("#song"), mbtn = $("#music");
+function setMusic(on){
+  if (on) { song.play().then(() => { mbtn.setAttribute("aria-pressed","true"); mbtn.setAttribute("aria-label","Pausar música"); }).catch(()=>{}); }
+  else { song.pause(); mbtn.setAttribute("aria-pressed","false"); mbtn.setAttribute("aria-label","Poner música"); }
+}
+mbtn.onclick = () => setMusic(song.paused);
+$("#open").onclick = () => { setMusic(true); burst(160); $("#inicio").scrollIntoView(); };
+
+/* Confeti */
+const cv = $("#confetti"), cx = cv.getContext("2d"); let bits = [], raf = 0;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function size(){ cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+size(); addEventListener("resize", size);
+function burst(n){
+  if (reduce) return;
+  const cols = ["#1E7A4C","#F2B230","#C9382A","#0F4A2E","#FFE58A","#F7C6D3","#CFE3F6"];
+  for (let i=0;i<n;i++) bits.push({x:Math.random()*cv.width, y:-20*devicePixelRatio - Math.random()*cv.height*.3, vx:(Math.random()-.5)*3, vy:2+Math.random()*4,
+    r:Math.random()*6.28, vr:(Math.random()-.5)*.3, w:(6+Math.random()*6)*devicePixelRatio, h:(4+Math.random()*4)*devicePixelRatio, c:cols[i%cols.length]});
+  if (!raf) tick();
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  bits.forEach(b => { b.x += b.vx*devicePixelRatio; b.y += b.vy*devicePixelRatio; b.r += b.vr;
+    cx.save(); cx.translate(b.x,b.y); cx.rotate(b.r); cx.fillStyle=b.c; cx.fillRect(-b.w/2,-b.h/2,b.w,b.h); cx.restore(); });
+  bits = bits.filter(b => b.y < cv.height + 30);
+  raf = bits.length ? requestAnimationFrame(tick) : 0;
+}
+
+/* Velas */
+const candles = [...document.querySelectorAll("[data-c]")];
+function check(){
+  if (candles.every(c => c.classList.contains("out"))) {
+    $("#wish").textContent = "¡Que se cumpla, Elí! 🙏";
+    $("#blow").textContent = "Encender otra vez";
+    burst(260); setMusic(true);
+    setTimeout(() => $("#carta").scrollIntoView({behavior: reduce ? "auto" : "smooth", block:"start"}), 1400);
+  }
+}
+candles.forEach(c => c.querySelector(".flame-btn").addEventListener("click", () => { c.classList.add("out"); check(); }));
+$("#blow").onclick = () => {
+  if (candles.every(c => c.classList.contains("out"))) { candles.forEach(c => c.classList.remove("out")); $("#wish").textContent = ""; $("#blow").textContent = "Soplar todas las velas"; }
+  else { candles.forEach(c => c.classList.add("out")); check(); }
+};
+</script>
+</body>
+</html>
